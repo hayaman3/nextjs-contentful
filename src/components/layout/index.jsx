@@ -1,10 +1,7 @@
 import Link from 'next/link'
+import React from 'react'
 
-interface Layout {
-  children: JSX.Element | null
-}
-
-const Layout = ({ children }: Layout) => {
+const Layout = ({ children }) => {
   return (
     <>
       <header className='bg-stone-100 p-8'>

@@ -1,16 +1,12 @@
 import { client } from '@/lib/contentful/client'
 import PostCard from '@/components/posts/PostCard'
 
-type Posts = {
-  posts:any;
-}
-
-const Posts = ({ posts }: Posts) => {
+const Posts = ({ posts }) => {
   return (
     <section className='section'>
       <div className='container'>
         <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10'>
-          {posts.map((post:any, i:any) => (
+          {posts.map((post, i) => (
             <PostCard key={post.fields.slug} post={post} />
           ))}
         </ul>
@@ -21,7 +17,7 @@ const Posts = ({ posts }: Posts) => {
 
 export const getStaticProps = async () => {
   const response = await client.getEntries({ content_type: 'post' })
-  console.log(response)
+
   return {
     props: {
       posts: response.items,
