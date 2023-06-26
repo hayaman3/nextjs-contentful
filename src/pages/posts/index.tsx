@@ -1,35 +1,33 @@
-// import { client } from '@/lib/contentful/client'
-// import PostCard from '@/components/posts/PostCard'
+import { client } from '@/lib/contentful/client'
+import PostCard from '@/components/posts/PostCard'
 
-// const Posts = ({ posts }) => {
-//   return (
-//     <section className='section'>
-//       <div className='container'>
-//         <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10'>
-//           {posts.map((post, i) => (
-//             <PostCard key={post.fields.slug} post={post} />
-//           ))}
-//         </ul>
-//       </div>
-//     </section>
-//   )
-// }
+type Posts = {
+  posts:any;
+}
 
-// export const getStaticProps = async () => {
-//   const response = await client.getEntries({ content_type: 'post' })
+const Posts = ({ posts }: Posts) => {
+  return (
+    <section className='section'>
+      <div className='container'>
+        <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10'>
+          {posts.map((post:any, i:any) => (
+            <PostCard key={post.fields.slug} post={post} />
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
 
-//   return {
-//     props: {
-//       posts: response.items,
-//       revalidate: 60
-//     }
-//   }
-// }
-
-// export default Posts
-
-const Posts = () => {
-  return <div>Posts</div>
+export const getStaticProps = async () => {
+  const response = await client.getEntries({ content_type: 'post' })
+  console.log(response)
+  return {
+    props: {
+      posts: response.items,
+      revalidate: 60
+    }
+  }
 }
 
 export default Posts
