@@ -3,7 +3,7 @@ import ContentfulImage from '../ui/ContentfulImage'
 import DateComponent from '../ui/DateComponent'
 
 const PostHeader = ({ post }) => {
-  const { title, coverImage, author, date } = post.fields
+  const { title, coverImage, author, createdAt } = post.fields
 
   return (
     <>
@@ -22,7 +22,7 @@ const PostHeader = ({ post }) => {
       </div>
       <div className='flex justify-between items-center md:hidden mb-6'>
         <Avatar name={author.fields.name} picture={author.fields.picture} />
-        <DateComponent dateString={date} className='text-sm text-gray-400' />
+        <DateComponent dateString={createdAt} className='text-sm text-gray-400' />
       </div>
     </>
   )
